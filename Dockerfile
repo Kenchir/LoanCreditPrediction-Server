@@ -8,10 +8,26 @@ COPY package*.json ./
 RUN npm install
 
 # Copying source files
+#Dockerfile
+# PROD CONFIG
+FROM node as prod
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+WORKDIR /app/client
+
+COPY ./client/package*.json ./
+
+RUN npm install
+
+WORKDIR /app
+
 COPY . .
 
-# Building app
-RUN npm run build --if-present
-RUN npm install -g pm2
-# Running the app
+ENV NODE_ENV=production
+
 CMD [ "npm", "start" ]
