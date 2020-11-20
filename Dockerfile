@@ -5,29 +5,16 @@ WORKDIR /usr/src/app
 
 # Installing dependencies
 COPY package*.json ./
+
 RUN npm install
 
 # Copying source files
-#Dockerfile
-# PROD CONFIG
-FROM node as prod
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
-WORKDIR /app/client
-
-COPY ./client/package*.json ./
-
-RUN npm install
-
-WORKDIR /app
-
 COPY . .
 
-ENV NODE_ENV=production
+EXPOSE 8080
+# Building app
+RUN npm run build --if-present
 
-CMD [ "npm", "start" ]
+RUN npm install -g pm2
+# Running the app
+CMD [ "node", "app.js" ]
