@@ -11,6 +11,8 @@ const express = require("express"),
  * 3. Use the eligibility and score probability along with the salaries to calculate the amount of loan
  */
 router.post("/CreditLoanStatus", (req, res) => {
+
+
   let {
     ApplicantName,
     ApplicantIncome,
@@ -18,7 +20,7 @@ router.post("/CreditLoanStatus", (req, res) => {
     Credit_History,
     Gender,
     Married,
-    Dependents,
+    Dependents,m,    
     Education,
     Property_Area,
     RepaymentPeriod,

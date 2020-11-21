@@ -19,6 +19,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // Use routes for the API
 app.use(require("./routes"));
+
+app.use("/", (req, res, next) => {
+  res.status("404").json({ message: "Not found" });
+});
 server.listen(PORT, () =>
   console.log("Loan credit award server is running!!!, on   port ", PORT)
 );
