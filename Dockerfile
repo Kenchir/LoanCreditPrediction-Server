@@ -17,4 +17,4 @@ RUN npm run build --if-present
 
 RUN npm install -g pm2
 # Running the app
-CMD [ "node", "app.js" ]
+CMD [ "pm2", "app.js" ]

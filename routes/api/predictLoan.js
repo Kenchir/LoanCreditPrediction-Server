@@ -47,7 +47,7 @@ router.post("/CreditLoanStatus", (req, res) => {
       Property_Area: [Property_Area],
     }),
   };
-  request(options, function (error, response) {
+  request(options,  (error, response) =>{
     if (error) {
       throw new Error(error);
     }
